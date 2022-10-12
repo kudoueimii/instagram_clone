@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
+    @post.user_id = current_user.id
     respond_to do |format|
       if params[:back]
         render :new
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
           format.json { render json: @post.errors, status: :unprocessable_entity }
         end
       end
-    end
+    end  
   end
 
   def update
@@ -50,27 +50,30 @@ class PostsController < ApplicationController
     end
   end
 
-  def confirm
-    @post = Post.new(post_params)
-    render :new if @post.invalid?
-  end
-
   def destroy
     @post.destroy
+
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
+  def confirm
+    @post = Post.new(post_params)
+    render :new if @post.invalid?
+    @post.user_id = current_user.id
+    @post.user_id = current_user.id
+  end
+
   private
 
   def set_post
-    @post = Post.find(params[:id])    
+    @post = Post.find(params[:id])
   end
 
-  def post_params      
+    
+  def post_params
     params.require(:post).permit(:image, :image_cache, :content)
   end
-
 end
