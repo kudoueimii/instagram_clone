@@ -2,9 +2,9 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 <p>
-  <strong>Image:</strong>
-  <%= if @user.image.any?
-        image_tag(@user.image.url)
+  <strong>Icon:</strong>
+  <%= if @user.image.present?
+        image_tag @user.image.url, size: "40x40"
       else
       image_tag 'pon.jpeg', size: "40x40"
       end
@@ -13,4 +13,4 @@
 
 
 <%= link_to 'Post', posts_path %>
-<%= link_to 'Edit', edit_user_path %> 
+<%= link_to 'Edit', edit_user_path(@user) %> 
