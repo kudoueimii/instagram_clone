@@ -19,6 +19,9 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    unless @post.user_id = current_user.id
+      redirect_to  new_post_path
+    end
   end
 
   def create

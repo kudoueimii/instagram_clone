@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.user_mail(@user).deliver
+
       redirect_to user_path(@user.id)
     else
       render :new 
@@ -22,6 +22,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user.user_id = current_user.id
+      redirect_to  new_post_path
+    end
   end
 
   def update
@@ -37,7 +40,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     render :new if @user.invalid?
     @user.user_id = current_user.id
-    @user.user_id = current_user.id
+  
   end
 
   private
