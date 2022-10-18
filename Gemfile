@@ -40,7 +40,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'faker'
-# gem 'rexml'
+
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
