@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    unless @user.user_id = current_user.id
+    unless @user.id = current_user.id
       redirect_to  new_post_path
     end
   end
