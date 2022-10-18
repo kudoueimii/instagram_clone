@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'sessions/new'
   resources :contacts
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy, :index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
   resources :posts do
@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   end 
   root 'sessions#new'
   
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
