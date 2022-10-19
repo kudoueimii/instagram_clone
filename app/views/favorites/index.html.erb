@@ -10,10 +10,10 @@
   </thead>
 
   <tbody>
-    <% @fav.each do |favorite| %>
+    <% @favorites.each do |favorite| %>
       <tr>
-        <td><%= image_tag favorite.image.to_s, size: '200x200'%></td>
-        <th><%= favorite.content%>
+        <td><%= image_tag favorite.post.image.to_s, size: '200x200'%></td>
+        <th><%= favorite.post.content%>
       </tr>
     <% end %>
   </tbody>
